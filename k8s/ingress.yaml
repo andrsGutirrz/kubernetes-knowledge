@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fastapi-hello-ingress
+  labels:
+    app: fastapi-hello
+spec:
+  rules:
+  - host: fastapi-hello.local  # Change this to your domain
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: fastapi-hello-service
+            port:
+              number: 80
+
